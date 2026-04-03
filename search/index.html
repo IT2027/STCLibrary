@@ -292,7 +292,7 @@ mark {
 
 <script>
 (function() {
-  const DATA_URL = '/STCLibrary/books.json';
+  const DATA_URL = './books.json';
 
   let sbBooks   = [];
   let sbField   = 'all';
@@ -504,6 +504,19 @@ mark {
     return sbEsc(text).replace(re, '<mark>$1</mark>');
   }
 })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var kill = function() {
+    document.querySelectorAll('.md-sidebar').forEach(function(el) { el.remove(); });
+    var c = document.querySelector('.md-content');
+    if (c) c.style.maxWidth = '100%';
+  };
+  kill();
+  setTimeout(kill, 300);
+  setTimeout(kill, 800);
+});
 </script></div>
             </div>
         </div>
