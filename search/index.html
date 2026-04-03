@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>ค้นหาหนังสือ - STC Library</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">STC Library</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">หน้าแรก</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">ค้นหาหนังสือ</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">ค้นหาหนังสือ</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">ค้นหาหนังสือ</h1>
+<style>
+:root {
+  --sb-primary: #1a56db;
+  --sb-primary-dark: #1e40af;
+  --sb-primary-light: #eff6ff;
+  --sb-accent: #f59e0b;
+  --sb-gray-50:  #f9fafb;
+  --sb-gray-100: #f3f4f6;
+  --sb-gray-200: #e5e7eb;
+  --sb-gray-300: #d1d5db;
+  --sb-gray-400: #9ca3af;
+  --sb-gray-500: #6b7280;
+  --sb-gray-600: #4b5563;
+  --sb-gray-700: #374151;
+  --sb-gray-800: #1f2937;
+  --sb-shadow: 0 4px 6px -1px rgba(0,0,0,.08);
+  --sb-shadow-lg: 0 10px 15px -3px rgba(0,0,0,.1);
+  --sb-radius: 10px;
+}
+
+#sb-stats {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.sb-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--sb-primary-light); border-radius: 20px;
+  padding: 5px 14px; font-size: .83rem; color: var(--sb-primary);
+  font-weight: 600;
+}
+.sb-chip .sb-num { font-size: 1rem; color: var(--sb-primary-dark); }
+
+#sb-card {
+  background: var(--md-default-bg-color, #fff);
+  border: 1px solid var(--sb-gray-200);
+  border-radius: var(--sb-radius);
+  padding: 20px 22px;
+  box-shadow: var(--sb-shadow);
+  margin-bottom: 22px;
+}
+
+.sb-field-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.sb-tab {
+  padding: 6px 15px; border-radius: 20px;
+  border: 2px solid var(--sb-gray-200);
+  background: var(--sb-gray-50); cursor: pointer;
+  font-size: .85rem; color: var(--sb-gray-600);
+  transition: all .16s; font-weight: 500;
+  font-family: inherit;
+}
+.sb-tab:hover { border-color: var(--sb-primary); color: var(--sb-primary); }
+.sb-tab.active {
+  background: var(--sb-primary); border-color: var(--sb-primary);
+  color: #fff;
+}
+
+.sb-input-row { display: flex; gap: 8px; }
+#sb-input {
+  flex: 1; padding: 10px 16px;
+  border: 2px solid var(--sb-gray-200); border-radius: 8px;
+  font-size: .95rem; font-family: inherit; outline: none;
+  background: var(--md-default-bg-color, #fff);
+  color: var(--sb-gray-800);
+  transition: border-color .16s;
+}
+#sb-input:focus { border-color: var(--sb-primary); }
+
+.sb-btn {
+  padding: 10px 22px; border: none; border-radius: 8px;
+  font-size: .95rem; font-family: inherit; cursor: pointer;
+  font-weight: 600; transition: background .16s;
+}
+.sb-btn-search { background: var(--sb-primary); color: #fff; }
+.sb-btn-search:hover { background: var(--sb-primary-dark); }
+.sb-btn-clear {
+  background: var(--sb-gray-100); color: var(--sb-gray-600);
+  padding: 10px 14px;
+}
+.sb-btn-clear:hover { background: var(--sb-gray-200); }
+
+.sb-hint { margin-top: 8px; font-size: .8rem; color: var(--sb-gray-400); }
+
+.sb-result-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 12px; flex-wrap: wrap; gap: 6px;
+}
+.sb-result-count { font-size: .95rem; color: var(--sb-gray-600); }
+.sb-result-count strong { color: var(--sb-primary); font-size: 1.05rem; }
+.sb-result-time { font-size: .78rem; color: var(--sb-gray-400); margin-top: 2px; }
+
+.sb-table-wrap {
+  background: var(--md-default-bg-color, #fff);
+  border: 1px solid var(--sb-gray-200);
+  border-radius: var(--sb-radius);
+  box-shadow: var(--sb-shadow);
+  overflow: hidden;
+}
+.sb-table-scroll { overflow-x: auto; }
+
+#sb-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .85rem; min-width: 900px;
+  display: table !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+#sb-table thead tr {
+  background: linear-gradient(135deg, var(--sb-primary) 0%, var(--sb-primary-dark) 100%) !important;
+}
+#sb-table thead th {
+  padding: 12px 13px; text-align: left; font-weight: 600;
+  white-space: nowrap; cursor: pointer; user-select: none;
+  color: #fff !important; border: none !important;
+  background: transparent !important; font-size: .83rem;
+}
+#sb-table thead th:hover { background: rgba(255,255,255,.1) !important; }
+#sb-table thead th .si { margin-left: 4px; opacity: .55; font-size: .7rem; }
+#sb-table thead th.sorted .si { opacity: 1; }
+
+#sb-table tbody tr {
+  border-bottom: 1px solid var(--sb-gray-100) !important;
+  transition: background .1s;
+}
+#sb-table tbody tr:last-child { border-bottom: none !important; }
+#sb-table tbody tr:hover { background: var(--sb-primary-light) !important; }
+#sb-table tbody tr:nth-child(even) { background: var(--sb-gray-50); }
+#sb-table tbody tr:nth-child(even):hover { background: var(--sb-primary-light) !important; }
+
+#sb-table td {
+  padding: 10px 13px; vertical-align: middle;
+  color: var(--sb-gray-700); border: none !important;
+}
+
+.td-order   { text-align: center; color: var(--sb-gray-400); font-size: .8rem; width: 70px; }
+.td-date    { white-space: nowrap; color: var(--sb-gray-500); font-size: .8rem; width: 95px; }
+.td-code    { font-weight: 700; color: var(--sb-primary); white-space: nowrap; }
+.td-title   { font-weight: 600; color: var(--sb-gray-800); min-width: 170px; }
+.td-author  { min-width: 120px; }
+.td-price   { text-align: right; font-weight: 700; color: var(--sb-accent); white-space: nowrap; }
+.td-pages   { text-align: center; color: var(--sb-gray-500); }
+.td-pub     { min-width: 130px; }
+
+.stag {
+  display: inline-block; padding: 1px 7px; border-radius: 10px;
+  font-size: .73rem; margin: 1px 2px;
+  background: var(--sb-gray-100); color: var(--sb-gray-600);
+}
+.stag.paper { background: #ecfdf5; color: #065f46; }
+.stag.color { background: #eff6ff; color: #1e40af; }
+.stag.tsize { background: #fef3c7; color: #92400e; }
+
+mark {
+  background: #fef08a; color: #713f12;
+  border-radius: 3px; padding: 0 2px;
+}
+
+.sb-state {
+  text-align: center; padding: 50px 20px;
+  color: var(--sb-gray-400);
+}
+.sb-state .sb-icon { font-size: 2.6rem; margin-bottom: 10px; }
+.sb-state p { font-size: .95rem; margin-top: 4px; }
+.sb-state .sb-sub { font-size: .82rem; margin-top: 5px; }
+
+@media (max-width: 600px) {
+  .sb-input-row { flex-wrap: wrap; }
+  .sb-btn-search { width: 100%; }
+}
+</style>
+
+<div id="sb-stats"><div class="sb-chip">⏳ กำลังโหลดข้อมูล...</div></div>
+
+<div id="sb-card">
+  <div class="sb-field-tabs">
+    <button class="sb-tab active" data-field="all"       onclick="sbSelectField(this)">ทั้งหมด</button>
+    <button class="sb-tab"        data-field="code"      onclick="sbSelectField(this)">รหัสวิชา</button>
+    <button class="sb-tab"        data-field="title"     onclick="sbSelectField(this)">ชื่อหนังสือ</button>
+    <button class="sb-tab"        data-field="author"    onclick="sbSelectField(this)">ผู้แต่ง</button>
+    <button class="sb-tab"        data-field="publisher" onclick="sbSelectField(this)">สำนักพิมพ์</button>
+  </div>
+  <div class="sb-input-row">
+    <input id="sb-input" type="text" placeholder="พิมพ์คำค้นหา..."
+           onkeydown="if(event.key==='Enter') sbSearch()">
+    <button class="sb-btn sb-btn-search" onclick="sbSearch()">🔍 ค้นหา</button>
+    <button class="sb-btn sb-btn-clear"  onclick="sbClear()">✕</button>
+  </div>
+  <div class="sb-hint" id="sb-hint">💡 ค้นหาทุกฟิลด์ — พิมพ์บางส่วนก็ได้ เช่น "20000" หรือ "ภาษาไทย"</div>
+</div>
+
+<div id="sb-results">
+  <div class="sb-state">
+    <div class="sb-icon">📖</div>
+    <p>พิมพ์คำค้นหาแล้วกด <strong>ค้นหา</strong></p>
+    <div class="sb-sub">รองรับการค้นหาภาษาไทยและภาษาอังกฤษ</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const DATA_URL = './books.json';
+
+  let sbBooks   = [];
+  let sbField   = 'all';
+  let sbAllHits = [];
+  let sbSortCol = null;
+  let sbSortAsc = true;
+
+  const HINTS = {
+    all:       '💡 ค้นหาทุกฟิลด์ — พิมพ์บางส่วนก็ได้ เช่น "20000" หรือ "ภาษาไทย"',
+    code:      '💡 ค้นหารหัสวิชา เช่น "20000-1101" หรือ "20000"',
+    title:     '💡 ค้นหาชื่อหนังสือ เช่น "ภาษาไทย" หรือ "คณิตศาสตร์"',
+    author:    '💡 ค้นหาชื่อผู้แต่ง เช่น "อนุจิตร" หรือ "สมชาย"',
+    publisher: '💡 ค้นหาสำนักพิมพ์ เช่น "พัฒนาวิชาการ" หรือ "ศูนย์"',
+  };
+
+  fetch(DATA_URL)
+    .then(r => { if (!r.ok) throw new Error('โหลดไฟล์ไม่สำเร็จ: ' + r.status); return r.json(); })
+    .then(data => {
+      sbBooks = data;
+      const codes = new Set(data.map(b => b.code));
+      const pubs  = new Set(data.map(b => b.publisher).filter(Boolean));
+      document.getElementById('sb-stats').innerHTML = `
+        <div class="sb-chip">📚 หนังสือทั้งหมด <span class="sb-num">${data.length.toLocaleString()}</span> รายการ</div>
+        <div class="sb-chip">🔖 รหัสวิชา <span class="sb-num">${codes.size.toLocaleString()}</span> รหัส</div>
+        <div class="sb-chip">🏢 สำนักพิมพ์ <span class="sb-num">${pubs.size.toLocaleString()}</span> แห่ง</div>`;
+    })
+    .catch(err => {
+      document.getElementById('sb-stats').innerHTML =
+        `<div class="sb-chip">⚠️ ${sbEsc(err.message)}</div>`;
+    });
+
+  window.sbSelectField = function(el) {
+    document.querySelectorAll('.sb-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    sbField = el.dataset.field;
+    document.getElementById('sb-hint').textContent = HINTS[sbField];
+    document.getElementById('sb-input').placeholder =
+      sbField === 'all'       ? 'พิมพ์คำค้นหา...' :
+      sbField === 'code'      ? 'ระบุรหัสวิชา เช่น 20000-1101' :
+      sbField === 'title'     ? 'ระบุชื่อหนังสือ' :
+      sbField === 'author'    ? 'ระบุชื่อผู้แต่ง' : 'ระบุชื่อสำนักพิมพ์';
+  };
+
+  window.sbSearch = function() {
+    const kw = document.getElementById('sb-input').value.trim();
+    if (!kw) {
+      const inp = document.getElementById('sb-input');
+      inp.style.borderColor = '#ef4444';
+      setTimeout(() => inp.style.borderColor = '', 900);
+      return;
+    }
+    if (!sbBooks.length) {
+      document.getElementById('sb-results').innerHTML =
+        '<div class="sb-state"><div class="sb-icon">⚠️</div><p>ข้อมูลยังไม่โหลด กรุณารอสักครู่</p></div>';
+      return;
+    }
+
+    const t0  = performance.now();
+    const kwL = kw.toLowerCase();
+
+    const hits = sbBooks.filter(b => {
+      switch (sbField) {
+        case 'code':      return b.code.toLowerCase().includes(kwL);
+        case 'title':     return b.title.toLowerCase().includes(kwL);
+        case 'author':    return b.author.toLowerCase().includes(kwL);
+        case 'publisher': return b.publisher.toLowerCase().includes(kwL);
+        default:
+          return b.code.toLowerCase().includes(kwL)
+              || b.title.toLowerCase().includes(kwL)
+              || b.author.toLowerCase().includes(kwL)
+              || b.publisher.toLowerCase().includes(kwL);
+      }
+    });
+
+    const ms = Math.round(performance.now() - t0);
+    sbAllHits = hits;
+    sbSortCol = null; sbSortAsc = true;
+    sbRender(hits, kw, ms);
+  };
+
+  window.sbClear = function() {
+    document.getElementById('sb-input').value = '';
+    document.getElementById('sb-input').focus();
+    sbAllHits = [];
+    document.getElementById('sb-results').innerHTML = `
+      <div class="sb-state">
+        <div class="sb-icon">📖</div>
+        <p>พิมพ์คำค้นหาแล้วกด <strong>ค้นหา</strong></p>
+        <div class="sb-sub">รองรับการค้นหาภาษาไทยและภาษาอังกฤษ</div>
+      </div>`;
+  };
+
+  function sbRender(data, kw, ms) {
+    const wrap = document.getElementById('sb-results');
+    if (!data.length) {
+      wrap.innerHTML = `
+        <div class="sb-state">
+          <div class="sb-icon">🔍</div>
+          <p>ไม่พบหนังสือที่ตรงกับ "<strong>${sbEsc(kw)}</strong>"</p>
+          <div class="sb-sub">ลองเปลี่ยนคำค้นหาหรือเลือกค้นหา "ทั้งหมด"</div>
+        </div>`;
+      return;
+    }
+    wrap.innerHTML = sbBuildTable(data, kw, ms);
+  }
+
+  function sbBuildTable(data, kw, ms) {
+    const cols = [
+      { key:'order',     label:'ลำดับที่ประกาศ', cls:'td-order'  },
+      { key:'date',      label:'วันที่ประกาศ',   cls:'td-date'   },
+      { key:'code',      label:'รหัสวิชา',       cls:'td-code'   },
+      { key:'title',     label:'ชื่อหนังสือ',    cls:'td-title'  },
+      { key:'author',    label:'ผู้แต่ง',         cls:'td-author' },
+      { key:'price',     label:'ราคา (บาท)',     cls:'td-price'  },
+      { key:'pages',     label:'หน้า',            cls:'td-pages'  },
+      { key:'paper',     label:'กระดาษ',          cls:''          },
+      { key:'color',     label:'การพิมพ์',        cls:''          },
+      { key:'size',      label:'ขนาด',            cls:''          },
+      { key:'publisher', label:'สำนักพิมพ์',     cls:'td-pub'    },
+    ];
+
+    const hl = (txt, field) => {
+      const searchable = { code:1, title:1, author:1, publisher:1 };
+      return searchable[field] ? sbHl(txt, kw) : sbEsc(txt);
+    };
+
+    const makeTags = (val, cls) =>
+      val && val !== '-'
+        ? val.split(', ').map(t => `<span class="stag ${cls}">${sbEsc(t)}</span>`).join('')
+        : `<span style="color:var(--sb-gray-300)">-</span>`;
+
+    const thead = cols.map(c =>
+      `<th class="${c.cls}" data-col="${c.key}" onclick="sbSortBy('${c.key}')">
+         ${c.label}<span class="si">⇅</span>
+       </th>`
+    ).join('');
+
+    const tbody = data.map(b => `
+      <tr>
+        <td class="td-order">${sbEsc(b.order) || '-'}</td>
+        <td class="td-date">${sbEsc(b.date)  || '-'}</td>
+        <td class="td-code">${hl(b.code,  'code')}</td>
+        <td class="td-title">${hl(b.title, 'title')}</td>
+        <td class="td-author">${hl(b.author, 'author') || '-'}</td>
+        <td class="td-price">${b.price != null ? Number(b.price).toLocaleString() : '-'}</td>
+        <td class="td-pages">${sbEsc(b.pages) || '-'}</td>
+        <td>${makeTags(b.paper, 'paper')}</td>
+        <td>${makeTags(b.color, 'color')}</td>
+        <td>${makeTags(b.size,  'tsize')}</td>
+        <td class="td-pub">${hl(b.publisher, 'publisher') || '-'}</td>
+      </tr>`).join('');
+
+    const timeLabel = typeof ms === 'number' ? `${ms} ms` : '-';
+
+    return `
+      <div class="sb-result-header">
+        <div>
+          <div class="sb-result-count">พบ <strong>${data.length.toLocaleString()}</strong> รายการ</div>
+          <div class="sb-result-time">ใช้เวลา ${timeLabel} · คลิกหัวตารางเพื่อเรียงลำดับ</div>
+        </div>
+      </div>
+      <div class="sb-table-wrap">
+        <div class="sb-table-scroll">
+          <table id="sb-table">
+            <thead><tr>${thead}</tr></thead>
+            <tbody>${tbody}</tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  window.sbSortBy = function(col) {
+    if (!sbAllHits.length) return;
+    sbSortAsc = (sbSortCol === col) ? !sbSortAsc : true;
+    sbSortCol = col;
+
+    const sorted = [...sbAllHits].sort((a, b) => {
+      let va = a[col] ?? '', vb = b[col] ?? '';
+      if (col === 'price' || col === 'pages') {
+        va = parseFloat(va) || 0; vb = parseFloat(vb) || 0;
+        return sbSortAsc ? va - vb : vb - va;
+      }
+      return sbSortAsc
+        ? String(va).localeCompare(String(vb), 'th')
+        : String(vb).localeCompare(String(va), 'th');
+    });
+
+    const kw = document.getElementById('sb-input').value.trim();
+    document.getElementById('sb-results').innerHTML = sbBuildTable(sorted, kw, '-');
+
+    document.querySelectorAll('#sb-table thead th').forEach(th => {
+      if (th.dataset.col === col) {
+        th.querySelector('.si').textContent = sbSortAsc ? ' ▲' : ' ▼';
+        th.classList.add('sorted');
+      }
+    });
+  };
+
+  function sbEsc(s) {
+    if (s == null) return '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function sbHl(text, kw) {
+    if (!text || !kw) return sbEsc(text);
+    const re = new RegExp('(' + kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+    return sbEsc(text).replace(re, '<mark>$1</mark>');
+  }
+})();
+</script></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
