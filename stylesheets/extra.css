@@ -1,2 +1,15 @@
-.md-sidebar--secondary { display: none !important; }
-.md-content { max-width: 100% !important; }
+/* ซ่อน Sidebar ฝั่งซ้าย */
+.md-sidebar--primary {
+  display: none;
+}
+
+/* ซ่อน Sidebar ฝั่งขวา */
+.md-sidebar--secondary {
+  display: none;
+}
+
+/* ขยายเนื้อหาให้เต็มความกว้าง */
+.md-content {
+  margin-left: 0;
+  margin-right: 0;
+}
