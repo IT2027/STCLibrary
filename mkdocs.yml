@@ -1,0 +1,4 @@
+site_name: STC Library
+nav:
+  - หน้าแรก: index.md
+  - ค้นหาหนังสือ: search.html   # ← ชี้ไปที่ .html ตรงๆ
