@@ -1,1 +1,3 @@
 footer { display: none !important; }
+.footer { display: none !important; }
+[role="contentinfo"] { display: none !important; }
